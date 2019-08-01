@@ -13,8 +13,8 @@ Goal is to review good useage of Redshift, including:
 
 ##### Distribution Keys, Sort Keys
 
-A really useful Confluence page which Data and Services put together is here:
-https://confluence.nordstrom.net/display/TDS/Performance+Tuning+Tips
+- Distribution keys inform how data is spread across the cluster (i.e. which NODE your data goes to)
+- Sort keys inform INTRA CLUSTER ordering of the data
 
 ##### AWS resources:
 - [Chosing the best distribution style](https://docs.aws.amazon.com/redshift/latest/dg/c_best-practices-best-dist-key.html)
