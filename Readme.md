@@ -12,6 +12,7 @@ AWS has a few key intro level concepts:
 
 #### Services for today:
 [Redshift](Redshift_intro.md)  
-[EC2](EC2_intro.md)  
-[S3](S3_intro.md)
+[EC2](EC2_intro.md)    
+[S3](S3_intro.md)  
+[Spectrum/Athena](athena_spectrum_intro.md)  
 

@@ -10,7 +10,7 @@ Unload and verify the data:
 
 ```
 UNLOAD ('SELECT * FROM sbox.eligible_population')
-TO 's3://mozbi-sandbox/spectrum_tutorial/r<your_name_here>'
+TO 's3://mozbi-sandbox/spectrum_tutorial/<your_name_here>/'
 credentials 'aws_access_key_id=<your access key>;aws_secret_access_key=<your secret access key>';
 ```
 N.B. - AWS recommends you use an IAM role for UNLOAD, I haven't figured that out though.
@@ -19,3 +19,39 @@ N.B. - AWS recommends you use an IAM role for UNLOAD, I haven't figured that out
     - Are your files there?
     - What do they look like?
 
+Create the data definition (within Athena):
+```
+CREATE EXTERNAL TABLE <your_name>_eligible_population
+(
+	subscription_id INT,
+	user_id INT,
+	account_id INT,
+	start_date DATE,
+	first_billing_date DATE,
+	pay_start_date DATE,
+	end_date DATE,
+	paying_month INT,
+	latest_calendar_date DATE,
+	vested INT
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+'field.delim' = '|')
+STORED AS TEXTFILE
+LOCATION 's3://mozbi-sandbox/spectrum_tutorial/<your_name>/';
+```  
+
+Query the data (Redshift):
+```
+SELECT *
+FROM spectrum.<your_name>_eligible_population
+LIMIT 100;
+```
+
+
+#### Why switch between Athena and Spectrum/Redshift?
+This is weird... Athena and Spectrum (the way I've set it up) share a data catalog (which is great!). We _should_ be able to simply CREATE TABLE within the Spectrum schema inside of Redshift. However apparently you have to be the *owner* of the schema to create a stupid table.... This makes no sense.
+
+[See documentation here if you're curious](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html).
+
+[Here's another poor soul complaining about this problem as well.](https://forums.aws.amazon.com/thread.jspa?messageID=799808)
