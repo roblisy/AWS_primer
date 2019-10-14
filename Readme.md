@@ -10,9 +10,10 @@ AWS has a few key intro level concepts:
     - Common services are Elastic Compute Cloud (aka EC2), Simple Storage Service (S3), and Redshift
 
 
-#### Services for today:
+#### Services within this repo:
 [Redshift](Redshift_intro.md)  
-[EC2](EC2_intro.md)    
+[EC2](EC2_intro.md)  
 [S3](S3_intro.md)  
 [Spectrum/Athena](athena_spectrum_intro.md)  
+[Lambda](lambda/lambda.md)
 
