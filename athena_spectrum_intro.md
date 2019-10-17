@@ -15,9 +15,9 @@
         - This switches from a fixed cost model to variable costs  
         - There are ways to minimize these costs, but there is no way to avoid them entirely.
 
-#### Spectrum Workshop Goals
-- Unload a table from our Redshift cluster to S3
-- Create a schema (DDL) on top of the S3 object using Glue
+#### Workshop Goals
+- Unload a table from our Redshift cluster to S3.
+- Create a schema (DDL) on top of the S3 object.
 - Query the S3 object using Spectrum / Athena.
 
 [The workshop instructions continue here](spectrum_steps.md)
