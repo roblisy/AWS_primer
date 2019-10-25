@@ -10,6 +10,6 @@
 - Need to interface with other AWS services / data
 
 #### What's the benefit / cost of using them?
-- Benefit: let you do big things
+- Benefit: lets you do big things
 - Benefit: use other operating systems seamlessly
-- Cost: $ (Nordstrom is charged for EC2 usage)
+- Cost: $ (we're charged by minute for EC2 usage)

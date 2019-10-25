@@ -19,7 +19,11 @@ N.B. - AWS recommends you use an IAM role for UNLOAD, I haven't figured that out
     - Are your files there?
     - What do they look like?
 
-Create the data definition (within Athena):
+#### Create the data definition:
+Spectrum can be setup to read from 2 catalogs: Athena or AWS Glue.
+- The Athena catalog pairs an Athena DB directly to a Redshift schema (1:1). This means anything created in either location will show up in the other. Make a table in Athena? It'll be available in your Redshift Spectrum schema. 
+
+
 ```
 CREATE EXTERNAL TABLE <your_name>_eligible_population
 (
@@ -50,7 +54,7 @@ LIMIT 100;
 
 
 #### Why switch between Athena and Spectrum/Redshift?
-This is weird... Athena and Spectrum (the way I've set it up) share a data catalog (which is great!). We _should_ be able to simply CREATE TABLE within the Spectrum schema inside of Redshift. However apparently you have to be the *owner* of the schema to create a stupid table.... This makes no sense.
+This is weird... Athena and Spectrum (the way I've set it up) share a data catalog (which is great!). We _should_ be able to simply CREATE TABLE within the Spectrum schema inside of Redshift. However apparently you have to be the *owner* of the schema to create a stupid table.... This makes no sense. We just get around this hiccup by creating the table in Athena, then querying it in Spectrum.
 
 [See documentation here if you're curious](https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html).
 

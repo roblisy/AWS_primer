@@ -11,9 +11,9 @@ AWS has a few key intro level concepts:
 
 
 #### Services within this repo:
-[Redshift](Redshift_intro.md)  
-[EC2](EC2_intro.md)  
-[S3](S3_intro.md)  
-[Spectrum/Athena](athena_spectrum_intro.md)  
+[Redshift](redshift/Redshift_intro.md)  
+[EC2](ec2/EC2_intro.md)  
+[S3](s3/S3_intro.md)  
+[Spectrum/Athena](athena_spectrum/athena_spectrum_intro.md)  
 [Lambda](lambda/lambda.md)
 
